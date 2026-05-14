@@ -1,0 +1,22 @@
+
+    int[] QuickSort(int[] num)
+    {
+        if(num.Length < 2) {return num;}
+        else
+        {
+            int pivot = num[0];
+            List<int> Low = new List<int>();
+            List<int> High = new List<int>();
+            
+            foreach(int i in num[1..])
+            {
+                if(i <= pivot){Low.Add(i);} 
+                else{High.Add(i);}
+            }
+            int[] ArrLow = QuickSort(Low.ToArray());
+            int[] ArrHigh = QuickSort(High.ToArray());
+            
+            return ArrLow.Concat(new int[]{pivot}).Concat(ArrHigh).ToArray();
+            
+        }
+        
