@@ -1,0 +1,51 @@
+int[] MergeSort(int[] arr)
+	{
+		if(arr.Length < 2) {return arr;}	
+		int mid = arr.Length / 2;
+		int[] Left = arr[..mid];
+		int[] Right = arr[mid..];
+		
+		Left = MergeSort(Left);
+		Right = MergeSort(Right);
+
+		foreach(int i in arr)
+		{
+			Console.WriteLine(i);	
+			
+		}
+		
+		return Merge(Left,Right);
+		
+		
+	}
+	int[] Merge(int[] Left, int[] Right)
+	{
+		List<int> result = new List<int>();
+		int L = 0;
+		int R = 0;
+		
+		while(L < Left.Length && R < Right.Length)
+		{
+			if(Left[L] < Right[R])	
+			{
+				result.Add(Left[L]);
+				L++;
+			}
+			else
+			{
+				result.Add(Right[R]);
+				R++;
+			}
+		}
+		while(L < Left.Length) 
+		{
+			result.Add(Left[L]);
+			L++;
+		}
+		while(R < Right.Length)
+		{
+			result.Add(Right[R]);	
+			R++;
+		}
+		return result.ToArray();
+	}
