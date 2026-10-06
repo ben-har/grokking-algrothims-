@@ -1,0 +1,43 @@
+public class Program
+{
+	int FindMax(int[] arr)
+	{
+		int Largest = 0;
+		foreach(int i in arr)
+		{
+			Largest = Largest < i ? i : Largest;	
+		}
+		return ++Largest;
+		
+	}
+	void CountSort(int[] arr)
+	{
+		int[] Temp = new int[FindMax(arr)];
+		for(int i = 0; i < arr.Length; i++)
+		{
+			int TempIndex = arr[i];
+			Temp[TempIndex]++;
+		}
+		
+		int ArrIndex = 0;
+		for(int i = 0; i < Temp.Length; i++)
+		{
+			for(int j = 0; j < Temp[i]; j++)
+			{
+				arr[ArrIndex] = i;
+				ArrIndex++;
+				
+			}
+			
+		}
+		
+		foreach(int i in arr){Console.WriteLine(i);}
+		
+	}
+	public static void Main()
+	{
+		Program prog = new Program();
+		int[] arr = {4, 2, 2, 8, 3, 3, 1};
+		prog.CountSort(arr);
+	}
+}
